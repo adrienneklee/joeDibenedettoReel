@@ -241,8 +241,8 @@ html {
 body {
   font-size: 1.8rem;
   line-height: 1.5;
-  color: white;
-  background-color: black;
+  color: darkslategrey;
+  background-color: whitesmoke;
   font-family: "Work Sans", sans-serif;
   margin: 0;
 }
