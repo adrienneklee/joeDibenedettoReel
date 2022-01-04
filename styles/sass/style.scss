@@ -1,1 +1,24 @@
 @import "setup";
+
+h1, ul {
+    text-align: center;
+}
+
+iframe {
+    width: 100%;
+}
+
+.multivid-cont {
+    display: flex;
+    align-items: center;
+    border: 1px solid blue;
+    .video-cont {
+        display: inline-block;
+        width: 50%;
+    }
+}
+
+.featured {
+    border: 1px solid red;
+    width: 100%;
+}
