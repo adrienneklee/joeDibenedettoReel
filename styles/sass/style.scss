@@ -1,24 +1,6 @@
+@import "colorPalette";
 @import "setup";
+@import "modal";
+@import "posterframes";
+@import "fonts";
 
-h1, ul {
-    text-align: center;
-}
-
-iframe {
-    width: 100%;
-}
-
-.multivid-cont {
-    display: flex;
-    align-items: center;
-    border: 1px solid blue;
-    .video-cont {
-        display: inline-block;
-        width: 50%;
-    }
-}
-
-.featured {
-    border: 1px solid red;
-    width: 100%;
-}

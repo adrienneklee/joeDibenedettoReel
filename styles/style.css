@@ -241,10 +241,31 @@ html {
 body {
   font-size: 1.8rem;
   line-height: 1.5;
-  color: darkslategrey;
-  background-color: whitesmoke;
+  color: #000;
+  background-color: #fff;
   font-family: "Work Sans", sans-serif;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover,
+a:focus {
+  color: #4f4f4f;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
 }
 
 .flex {
@@ -270,7 +291,7 @@ ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
-  color: white;
+  color: #000;
 }
 
 img {
@@ -280,33 +301,136 @@ img {
 
 .wrapper {
   max-width: 1200px;
-  width: 90%;
+  width: 98%;
   margin: 0 auto;
 }
 
-h1, ul {
-  text-align: center;
+.video-modal,
+.video-modal .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3000;
 }
 
-iframe {
-  width: 100%;
-}
-
-.multivid-cont {
+.video-modal {
+  overflow: hidden;
+  position: fixed;
+  opacity: 0;
+  -webkit-transform: translate(500%, 0%);
+          transform: translate(500%, 0%);
+  -webkit-transition: -webkit-transform 0s linear 0s;
+  transition: -webkit-transform 0s linear 0s;
+  transition: transform 0s linear 0s;
+  transition: transform 0s linear 0s, -webkit-transform 0s linear 0s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid blue;
-}
-.multivid-cont .video-cont {
-  display: inline-block;
-  width: 50%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
 
-.featured {
-  border: 1px solid red;
-  width: 100%;
+.video-modal .overlay {
+  z-index: 0;
+  background-color: #000;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out 0.05s;
+  transition: opacity 0.2s ease-out 0.05s;
+}
+
+.video-modal-content {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  margin: 0 auto;
+  overflow-y: visible;
+  background: #000;
+  width: calc(100% - 12em);
+  height: 0;
+  padding-top: calc((100% - 12em) * 0.5625);
+  /* 16:9 calc */
+}
+
+/* Scaling to fit within the current Viewport size:
+   When viewport aspect ratio is greater than 16:9
+   work off the height instead of the width for calc */
+@media (min-aspect-ratio: 16/9) {
+  .video-modal-content {
+    width: 0;
+    height: calc(100vh - 10em);
+    padding-top: 0;
+    padding-left: calc((100vh - 10em) * 1.7778);
+    /* 16:9 calc */
+  }
+}
+/* Mobile Layout Tweaks - side margins reduced */
+@media (max-width: 640px) {
+  .video-modal-content {
+    width: calc(100% - 1em);
+    padding-top: calc((100% - 1em) * 0.5625);
+    /* 16:9 calc */
+  }
+}
+/* modal close button */
+.close-video-modal {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -40px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+iframe#vimeo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: #000;
+  -webkit-box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* show the modal: 
+   add class to the body to reveal */
+.show-video-modal .video-modal {
+  opacity: 1;
+  transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+}
+
+.show-video-modal .video-modal .overlay {
+  opacity: 1;
+}
+
+.show-video-modal .video-modal-content {
+  transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+}
+
+.video-grid {
+  margin: 10px;
+}
+
+@media (max-width: 640px) {
+  .col-2 {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+h2 {
+  color: #000;
+  font-size: 1.2rem;
 }
